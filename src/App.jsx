@@ -1,35 +1,81 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState, useEffect } from 'react';
+import SignIn from './auth/SignIn';
+import SignUp from './auth/SignUp';
+import Home from './Home';
+import { auth } from './config/firebase';
+
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [showSignIn, setShowSignIn] = useState(true);
+  const [user, setUser] = useState(null); // Store user information
+  const [loading, setLoading] = useState(false); // Loading state
+  const [redirectToHome, setRedirectToHome] = useState(false); // Redirect state
 
-  return (
-    <>
+  const toggleComponent = () => {
+    setShowSignIn(!showSignIn);
+  };
+
+  // Function to set loading state and redirect to Home after 5 seconds
+  const setLoadingAndRedirect = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setRedirectToHome(true);
+    }, 2000); // 5000 milliseconds = 5 seconds
+  };
+
+  // Use useEffect to listen for changes in the user's authentication state
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setUser(user); // Update the user state with the authenticated user or null if not authenticated
+      if (user) {
+        setLoadingAndRedirect();
+      }
+    });
+
+    // Clean up the listener when the component unmounts
+    return () => unsubscribe();
+  }, []);
+
+  // Redirect to Home when redirectToHome is true
+  if (redirectToHome) {
+    return <Home />;
+  }
+
+  // Check if a user is authenticated
+  if (user) {
+    // Check if the user has a displayName (username)
+    if (user.displayName) {
+      return <Home />;
+    } else {
+      return (
+        <div>
+          {loading ? (
+            <p>Loading...</p>
+          ) : (
+            <p>Please set your username before proceeding.</p>
+          )}
+        </div>
+      );
+    }
+  } else {
+    // Display sign-in or sign-up based on showSignIn state
+    return (
       <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <>
+            {showSignIn ? (
+              <SignIn toggleComponent={toggleComponent} />
+            ) : (
+              <SignUp toggleComponent={toggleComponent} />
+            )}
+          </>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    );
+  }
 }
 
-export default App
+export default App;
