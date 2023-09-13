@@ -5,6 +5,7 @@ import Navbar from './components/Navbar';
 import Sidebar from './components/Sidebar';
 import Shop from './components/Shop';
 import Bank from './components/Bank';
+import Combat from './components/Combat';
 
 
 const Home = () => {
@@ -39,6 +40,7 @@ const Home = () => {
             <div className="main-content">
             {selectedContent === 'bank' && <Bank />}
             {selectedContent === 'shop' && <Shop />}
+            {selectedContent === 'combat' && <Combat />}
             </div>
           </div>
         </div>
