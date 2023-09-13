@@ -10,6 +10,7 @@ const Navbar = () => {
     const userSignOut = () => {
         signOut(auth).then(() =>{
             console.log('sign out successful');
+            location.reload();
         }).catch(error => console.log(error));
     }
     

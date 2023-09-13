@@ -33,13 +33,23 @@ a:hover {
 }
 
 .sign-in-container{
-
+  display:flex !important;
   text-align: center;
   justify-content: center;
-  vertical-align: center;
-  display:flex;
-  flex-direction: column;
   min-height: 100vh;
+  flex-direction: initial;
+
+}
+
+.sign-in-container .card{
+  max-height: 18rem;
+  margin-top:20rem;
+
+}
+
+.signup-card{
+
+  min-height:20rem;
 
 }
 
@@ -71,6 +81,7 @@ body {
   background-color: #33373b;
   border: 1px #42474d solid;
   border-radius:2px;
+  min-width: 225px;
 }
 
 .navbar .dropdown-item{
@@ -97,12 +108,16 @@ body {
 
 .navbar .dropdown-item:hover{
 
-  background:#42474d; 
+  margin-left:10px;
+  margin-right:10px;
+  background:none; 
 }
 .navbar .dropdown-title{
   font-weight: bold;
   font-size:1.25rem;
   background:none; 
+  margin-left:0px !important;
+  margin-right:0px !important;
 }
 
 .navbar .dropdown-title:hover{

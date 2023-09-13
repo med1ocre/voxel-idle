@@ -1,75 +1,83 @@
 import React, { useState } from 'react';
-import { auth } from "../config/firebase"
+import { auth, db } from "../config/firebase"; // Make sure to import 'db' from your Firebase config
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore'; // Import 'doc' and 'setDoc' from Firestore
+import { stats } from '../data/player';
+import { mapAuthCodeToMessage } from '../js/fbscript/';
 
 const SignUp = ({ toggleComponent }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [error, setError] = useState(null); // State to store and display errors
 
-    const signUp = (e) => {
+    const signUp = async (e) => {
         e.preventDefault();
-    
-        // Check if the username is empty
-        if (username.trim() === '') {
-            console.log("Please enter a username.");
-            return; // Exit the function if the username is empty
-        }
-    
-        // Create a user with email, password, and username
-        createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-            // Get the user from the userCredential object
-            const user = userCredential.user;
-            
-            // Update the user's profile with the username
-            updateProfile(user, {
-                displayName: username
-            })
-            .then(() => {
-                // Username is set successfully
-                console.log("Username set:", username);
-                
-            })
-            .catch((error) => {
-                console.log("Error setting username:", error);
-            });
-        })
-        .catch((error) => {
-            console.log("Error signing up:", error);
-        });
 
+        if (username.trim() === '') {
+            setError("Please enter a username.");
+            return;
+        }
+
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const user = userCredential.user;
+
+            await updateProfile(user, {
+                displayName: username
+            });
+
+            const player = {
+                uid: user.uid,
+                username: username,
+                coins: stats.coins,
+                voxels: stats.voxels,
+                blocks: stats.blocks,
+                gems: stats.gems
+            };
+
+            await setDoc(doc(db, "players", user.uid), player);
+
+            console.log("User and player data created successfully");
+        } catch (error) {
+            const errorMessage = mapAuthCodeToMessage(error.code); // Map the Firebase error code to a user-friendly message
+            setError(errorMessage); // Set the error message in the state
+            console.error("Error signing up or setting player data:", error);
+        }
     }
-    
 
     return (
         <div className='sign-in-container'>
-            <form onSubmit={signUp}>
-                <h1>Create an Account</h1>
-                <input
-                    type="text"
-                    placeholder="Enter your Username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                />
-                <input
-                    type="email"
-                    placeholder="Enter your Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <input
-                    type="password"
-                    placeholder="Enter your password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
-                <button type="submit">Sign Up</button>
-            </form>
-            <p>
-                Already have an account?{' '}
-                <button onClick={toggleComponent}>Sign In Here</button>
-            </p>
+            <div className='card bg-dark text-white signup-card' style={{"width" : "18rem"}}>
+                <form onSubmit={signUp}>
+                    <h2 className="card-title">Create Account</h2>
+                    <input
+                        type="text"
+                        placeholder="Enter your Username"
+                        value={username}
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <input
+                        type="email"
+                        placeholder="Enter your Email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Enter your password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <button type="submit">Sign Up</button>
+                    
+                </form>
+                <p>
+                    Already have an account?{' '}
+                    <button onClick={toggleComponent}>Sign In Here</button>
+                </p>
+                {error && <p className="error" style={{"marginTop" : "2rem" , "color" : "#E3242B"}}>{error}</p>} {/* Display error message if there is an error */}
+            </div>
         </div>
     );
 }

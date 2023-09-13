@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { auth } from "./config/firebase"
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Navbar from './components/navbar';
-
+import { getCoin } from './js/script'
 
 const Home = () => {
     const user = auth.currentUser;
@@ -30,7 +30,7 @@ const Home = () => {
         
         <div>
         <Navbar />
-
+        <button onClick={getCoin}>Coin</button>
         </div>
     )
 

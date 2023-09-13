@@ -6,6 +6,7 @@ import Home from './Home';
 import { auth } from './config/firebase';
 
 
+
 function App() {
   const [showSignIn, setShowSignIn] = useState(true);
   const [user, setUser] = useState(null); // Store user information
@@ -21,7 +22,7 @@ function App() {
     setLoading(true);
     setTimeout(() => {
       setRedirectToHome(true);
-    }, 2000); // 5000 milliseconds = 5 seconds
+    }, 2000); 
   };
 
   // Use useEffect to listen for changes in the user's authentication state
