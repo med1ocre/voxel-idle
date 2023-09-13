@@ -17,7 +17,7 @@ const Navbar = () => {
     return (
         <nav className="navbar navbar-dark bg-dark">
         <div className="container-fluid">
-            <a className="navbar-brand">Voxel Idle</a>
+            <a className="navbar-brand game-title">VOXEL IDLE | V0.0.1</a>
             <div className="dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" data-bs-placement="bottom-start" aria-haspopup="true" aria-expanded="false" data-bs-auto-end="false">
                 {username}

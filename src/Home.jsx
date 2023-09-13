@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { auth } from "./config/firebase"
 import { onAuthStateChanged, signOut } from 'firebase/auth';
-import Navbar from './components/navbar';
-import { getCoin } from './js/script'
+import Navbar from './components/Navbar';
+import Sidebar from './components/Sidebar';
+import Shop from './components/Shop';
+import Bank from './components/Bank';
+
 
 const Home = () => {
+    const [selectedContent, setSelectedContent] = useState('bank');
+
     const user = auth.currentUser;
     const username = user.displayName;
     const[authUser, setAuthUser] = useState(null);
@@ -26,14 +31,18 @@ const Home = () => {
             console.log('sign out successful');
         }).catch(error => console.log(error));
     }
-    return(    
-        
-        <div>
-        <Navbar />
-        <button onClick={getCoin}>Coin</button>
+    return (
+        <div className="app-container">
+          <Navbar />
+          <div className="content-container">
+            <Sidebar onSelectContent={setSelectedContent} />
+            <div className="main-content">
+            {selectedContent === 'bank' && <Bank />}
+            {selectedContent === 'shop' && <Shop />}
+            </div>
+          </div>
         </div>
-    )
-
-}
+      );
+    };
 
 export default Home;
