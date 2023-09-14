@@ -3,7 +3,7 @@ import { auth } from "../config/firebase"
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 
 
-const Navbar = () => {
+const Navbar = ({ onToggleSidebar }) => {
     const user = auth.currentUser;
     const username = user.displayName;
 

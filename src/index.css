@@ -98,8 +98,7 @@ a:hover {
 
 .main-content {
   flex-grow: 1;
-  padding: 20px; /* Adjust padding as needed */
-  overflow: auto; /* Enable scrolling if content overflows */
+  overflow: auto; 
 }
 
 .nav-main-heading {
@@ -255,4 +254,80 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+/* Add this to your existing CSS file */
+
+/* Hamburger menu styles */
+.hamburger-menu {
+  display: none; /* Initially hide the hamburger menu */
+  /* Add styling for the hamburger menu button (you can customize this) */
+}
+
+/* Show the sidebar on screens wider than 1000px */
+@media (min-width: 1000px) {
+  .sidebar {
+    display: block !important; /* Display the sidebar */
+  }
+
+  .hamburger-menu {
+    display: none !important; /* Hide the hamburger menu */
+  }
+}
+
+/* Hide the sidebar and show the hamburger menu on screens 1000px or narrower */
+@media (max-width: 1000px) {
+  .sidebar {
+    display: none !important; /* Hide the sidebar */
+  }
+
+  .hamburger-menu {
+    display: block !important; /* Display the hamburger menu */
+  }
+}
+
+.main-content .tree-container{
+
+
+    padding-right: 2rem !important;
+    padding-left: 2rem !important;
+
+
+}
+
+.main-content .row{
+
+
+  margin-top:2rem;
+
+
+}
+
+.navbar-text{
+
+
+  width:100%;
+  text-align: center;
+
+
+}
+
+.skill-progress-container{
+
+  padding-left:0px;
+  padding-right:0px;
+
+}
+
+.skill-navbar{
+
+  padding-top:0px !important;
+
+}
+
+.skill-progress{
+
+  border-radius: 0px;
+
+
 }

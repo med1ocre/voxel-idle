@@ -6,6 +6,11 @@ import Sidebar from './components/Sidebar';
 import Shop from './components/Shop';
 import Bank from './components/Bank';
 import Combat from './components/Combat';
+import Completion from './components/Completion';
+import Statistics from './components/Statistics';
+import Leaderboard from './components/Leaderboard';
+import Settings from './components/Settings';
+import Woodcutting from './components/Woodcutting';
 
 
 const Home = () => {
@@ -41,6 +46,11 @@ const Home = () => {
             {selectedContent === 'bank' && <Bank />}
             {selectedContent === 'shop' && <Shop />}
             {selectedContent === 'combat' && <Combat />}
+            {selectedContent === 'completion' && <Completion />}
+            {selectedContent === 'statistics' && <Statistics />}
+            {selectedContent === 'leaderboard' && <Leaderboard />}
+            {selectedContent === 'settings' && <Settings />}
+            {selectedContent === 'woodcutting' && <Woodcutting />}
             </div>
           </div>
         </div>
