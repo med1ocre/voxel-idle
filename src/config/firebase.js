@@ -5,7 +5,6 @@ import { getFirestore } from 'firebase/firestore';
 import { doc, setDoc } from 'firebase/firestore'; // Import 'doc' and 'setDoc' from Firestore
 
 
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,9 +28,8 @@ export async function updateFirebaseWithStats(statsToUpdate) {
           const player = {
               uid: user.uid,
               coins: statsToUpdate.coins,
-              voxels: statsToUpdate.voxels,
-              blocks: statsToUpdate.blocks,
-              gems: statsToUpdate.gems,
+              woodcuttinglevel: statsToUpdate.skill.woodcutting.level
+
               // Add other player data here (e.g., score, level, etc.)
           };
 

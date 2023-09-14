@@ -5,4 +5,6 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   base: "/voxel-idle/",
   plugins: [react()],
+  assetsDir: 'public/fonts', 
 })
+
