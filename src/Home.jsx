@@ -10,7 +10,7 @@ import Completion from './components/Completion';
 import Statistics from './components/Statistics';
 import Leaderboard from './components/Leaderboard';
 import Settings from './components/Settings';
-import Woodcutting from './components/Woodcutting';
+import Delve from './components/delve';
 
 
 const Home = () => {
@@ -50,7 +50,7 @@ const Home = () => {
             {selectedContent === 'statistics' && <Statistics />}
             {selectedContent === 'leaderboard' && <Leaderboard />}
             {selectedContent === 'settings' && <Settings />}
-            {selectedContent === 'woodcutting' && <Woodcutting />}
+            {selectedContent === 'delve' && <Delve />}
             </div>
           </div>
         </div>

@@ -9,7 +9,7 @@ import settings from '../assets/media/icons/settings.png';
 import completion from '../assets/media/icons/completion.png';
 import statistics from '../assets/media/icons/statistics.png';
 import leaderboard from '../assets/media/icons/leaderboard.png';
-import woodcutting from '../assets/media/skills/woodcutting/woodcutting.png';
+import delve from '../assets/media/skills/delve/delve.png';
 
 const Sidebar = ({ onSelectContent }) => {
   const [isSidebarVisible, setIsSidebarVisible] = useState(true);
@@ -81,10 +81,10 @@ const Sidebar = ({ onSelectContent }) => {
       <ul className="nav nav-pills flex-column">
         <div className="nav-main-heading font-weight-bold"><span>Non-Combat</span></div>
         <li>
-            <a href="#" className="nav-link link-light" style={{ display: 'flex', alignItems: 'center' }} onClick={() => onSelectContent('woodcutting')}>
+            <a href="#" className="nav-link link-light" style={{ display: 'flex', alignItems: 'center' }} onClick={() => onSelectContent('delve')}>
                 <div style={{ display: 'flex', alignItems: 'center' }}>
-                <img src={woodcutting} style={{ width: '1.5rem'}} alt="Woodcutting Icon" />
-                <span className="sidebar-item-title">Woodcutting</span>
+                <img src={delve} style={{ width: '1.5rem'}} alt="Delve Icon" />
+                <span className="sidebar-item-title">Delve</span>
                 </div>
                 <span style={{ marginLeft: 'auto' }}>(1 / 99)</span>
             </a>

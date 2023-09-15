@@ -39,6 +39,7 @@ const SignIn = ({ toggleComponent }) => {
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                   ></input>
+                  <br />
                   <button type="submit">Log In</button>
               </form>
               <p>
