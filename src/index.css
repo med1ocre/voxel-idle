@@ -309,6 +309,43 @@ button:focus-visible {
 
 }
 
+.card-title{
+
+  margin-bottom:0;
+  margin-top:0.25rem;
+
+}
+
+
+
+.delve-modal .modal-body ul{
+
+  padding-left: 0 !important;
+
+}
+
+.delve-modal .modal-body{
+
+  padding: 0;
+
+}
+
+.delve-modal .modal-footer{
+
+  padding-top: 0;
+
+}
+
+.main-content .area-container{
+
+
+  padding-right: 2rem !important;
+  padding-left: 2rem !important;
+
+
+}
+
+
 .tree{
 
   text-align: center !important;
@@ -320,24 +357,116 @@ button:focus-visible {
 .tree { 
   
   transition: all .2s ease-in-out; 
+  max-height: 220px;
+  min-height: 220px;
 
+}
+
+.area-wrapper .card-img-top {
+  margin-top: 0.1rem !important;
+  width: 4rem !important;
+  height: auto;
+}
+
+.area{
+
+  text-align: center !important;
+  justify-content: center !important;
+  cursor: pointer;
+
+}
+
+.slot-bg{
+
+  background:#2D3542;
+  border-radius: 5px;
+
+}
+
+.area { 
+  
+  transition: all .2s ease-in-out; 
+  max-height: 240px;
+  min-height: 240px;
+
+}
+
+.modal-content{
+
+  background-color: #212529 !important;
+  text-align: center;
+
+}
+
+.modal-header{
+
+  border-bottom: none !important;
+  text-align: center !important;
+  flex-direction: column;
+    
+}
+
+.modal-footer{
+
+  border-top: none !important;
+    
 }
 
 /* Customize the color for WebKit-based browsers (Chrome, Safari) */
 .skill-progress::-webkit-progress-value {
-  background: #FF5733 !important; 
+  background: #ff5d41 !important; 
 }
 
 /* Customize the color for Gecko-based browsers (Firefox) */
 .skill-progress::-moz-progress-bar {
-  background: #FF5733 !important;
+  background: #ff5d41 !important;
 }
 
 /* Customize the color for other browsers (fallback) */
 .skill-progress{
   /* Use a background gradient as a fallback for unsupported browsers */
   background-image: linear-gradient(to right, #FF5733 0%, #FF5733 50%, transparent 50%, transparent 100%);
-  background: #FF5733 !important;
+  background: #ff5d41 !important;
+}
+
+.delve-progress::-webkit-progress-value {
+  background: #5f5d5d !important; 
+}
+
+/* Customize the color for Gecko-based browsers (Firefox) */
+.delve-progress::-moz-progress-bar {
+  background: #5f5d5d !important;
+}
+
+/* Customize the color for other browsers (fallback) */
+.delve-progress{
+  /* Use a background gradient as a fallback for unsupported browsers */
+  background-image: linear-gradient(to right, #FF5733 0%, #FF5733 50%, transparent 50%, transparent 100%);
+  background: #5f5d5d !important;
+}
+
+
+
+.delve-progress-bg::-webkit-progress-value {
+  background: #2D3542 !important; 
+}
+
+/* Customize the color for Gecko-based browsers (Firefox) */
+.delve-progress-bg::-moz-progress-bar {
+  background: #2D3542 !important;
+}
+
+/* Customize the color for other browsers (fallback) */
+.delve-progress-bg{
+  /* Use a background gradient as a fallback for unsupported browsers */
+  background-image: linear-gradient(to right, #FF5733 0%, #FF5733 50%, transparent 50%, transparent 100%);
+  background: #2D3542 !important;
+}
+
+.delve-progress-bg{
+
+  border-radius: 3px;
+    
 }
 
 .skill-progress-container{
@@ -352,13 +481,19 @@ button:focus-visible {
   transform: scale(1.03); 
 }
 
-.card-img-top {
-  
-  margin-top:1rem;
+.area:hover { 
+  transform: scale(1.03); 
+}
+
+
+.tree-wrapper{
+
+  width:100%;
+  text-align: center;
 
 }
 
-.tree-wrapper{
+.area-wrapper{
 
   width:100%;
   text-align: center;
@@ -372,6 +507,12 @@ button:focus-visible {
   margin-top:2rem;
 
 
+}
+
+.area-info-row{
+
+  margin-top:0.3rem !important;
+  
 }
 
 .navbar-text{
@@ -401,4 +542,63 @@ button:focus-visible {
   border-radius: 0px;
 
 
+}
+
+.row.gutters-tiny {
+  margin-right: -0.1875rem;
+  margin-left: -0.1875rem;
+}
+
+.text-center {
+  text-align: center!important;
+}
+
+.resize-32 {
+  width: 32px!important;
+}
+
+.resize-16 {
+
+  width: 16px!important;
+}
+
+.m-2 {
+  margin: 0.5rem!important;
+}
+
+
+.resize-24 {
+  height: 24px!important;
+  width: 24px!important;
+}
+
+.p-2 {
+  padding: 0.5rem!important;
+}
+
+.p-1 {
+  padding: 0.25rem!important;
+}
+
+.badge-pill {
+  padding-right: 0.6em;
+  padding-left: 0.6em;
+  border-radius: 10rem;
+  background-color: #727f92;
+}
+
+.w-100{
+
+  width:100% !important;
+
+}
+
+
+.font-size-sm {
+  font-size: .875rem!important;
+}
+
+img {
+  vertical-align: middle;
+  border-style: none;
 }

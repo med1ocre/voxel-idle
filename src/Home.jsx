@@ -10,7 +10,7 @@ import Completion from './components/Completion';
 import Statistics from './components/Statistics';
 import Leaderboard from './components/Leaderboard';
 import Settings from './components/Settings';
-import Delve from './components/delve';
+import Delve from './components/Delve';
 
 
 const Home = () => {
